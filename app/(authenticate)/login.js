@@ -7,12 +7,16 @@ import {
   KeyboardAvoidingView,
   Pressable,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 import { EvilIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}
@@ -57,7 +61,14 @@ const login = () => {
               color="black"
             />
             <TextInput
-              style={{ color: "grey", marginVertical: 10, width: 300 }}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={{
+                color: "grey",
+                marginVertical: 10,
+                width: 300,
+                fontSize: email ? 18 : 18,
+              }}
               placeholder="enter your email"
             />
           </View>
@@ -81,8 +92,15 @@ const login = () => {
               color="black"
             />
             <TextInput
+              value={password}
+              onChangeText={(text) => setPassword(text)}
               secureTextEntry={true}
-              style={{ color: "grey", marginVertical: 10, width: 300 }}
+              style={{
+                color: "grey",
+                marginVertical: 10,
+                width: 300,
+                fontSize: email ? 18 : 18,
+              }}
               placeholder="enter your password"
             />
           </View>
@@ -122,7 +140,10 @@ const login = () => {
             Login
           </Text>
         </Pressable>
-        <Pressable style={{ marginTop: 15 }}>
+        <Pressable
+          style={{ marginTop: 15 }}
+          onPress={() => router.replace("/register")}
+        >
           <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
             Don't have an account ? Sign Up
           </Text>
