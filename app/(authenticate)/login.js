@@ -36,7 +36,7 @@ const login = () => {
               fontSize: 17,
               fontWeight: "bold",
               marginTop: 12,
-              color: "041E42",
+              color: "#041E42",
             }}
           >
             Log in to your account
