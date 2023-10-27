@@ -11,11 +11,15 @@ import {
 import React, { useState } from "react";
 import { EvilIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { Entypo } from '@expo/vector-icons';
 
 const register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const router = useRouter();
   return (
     <SafeAreaView
@@ -43,6 +47,30 @@ const register = () => {
           </Text>
         </View>
         <View style={{ marginTop: 70 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 5,
+              backgroundColor: "#E0E0E0",
+              paddingVertical: 5,
+              borderRadius: 5,
+            }}
+          >
+            <Ionicons name="person" style={{ marginLeft: 8 }}
+              size={24} color="black" />
+            <TextInput
+              value={name}
+              onChangeText={(text) => setName(text)}
+              style={{
+                color: "grey",
+                marginVertical: 10,
+                width: 300,
+                fontSize: name ? 18 : 18,
+              }}
+              placeholder="enter your Name"
+            />
+          </View>
           <View
             style={{
               flexDirection: "row",
@@ -82,7 +110,7 @@ const register = () => {
               backgroundColor: "#E0E0E0",
               paddingVertical: 5,
               borderRadius: 5,
-              marginTop: 30,
+              marginTop: 12,
             }}
           >
             <EvilIcons
@@ -105,9 +133,37 @@ const register = () => {
             />
           </View>
         </View>
+        <View style={{ marginTop: 10 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 5,
+              backgroundColor: "#E0E0E0",
+              paddingVertical: 5,
+              borderRadius: 5,
+              marginTop: 12,
+            }}
+          >
+            <Entypo name="image" style={{ marginLeft: 8 }}
+              size={24} color="black" />
+            <TextInput
+              value={image}
+              onChangeText={(text) => setImage(text)}
+              secureTextEntry={true}
+              style={{
+                color: "grey",
+                marginVertical: 10,
+                width: 300,
+                fontSize: image ? 18 : 18,
+              }}
+              placeholder="enter your Image url"
+            />
+          </View>
+        </View>
         <View
           style={{
-            marginTop: 12,
+            marginTop: 10,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
@@ -118,7 +174,7 @@ const register = () => {
             Forgot Password
           </Text>
         </View>
-        <View style={{ marginTop: 80 }}></View>
+        <View ></View>
         <Pressable
           style={{
             width: 200,
@@ -127,6 +183,7 @@ const register = () => {
             marginLeft: "auto",
             marginRight: "auto",
             padding: 15,
+            marginTop: 12
           }}
         >
           <Text
@@ -137,7 +194,7 @@ const register = () => {
               fontWeight: "bold",
             }}
           >
-            Login
+            Register
           </Text>
         </Pressable>
         <Pressable
@@ -145,7 +202,7 @@ const register = () => {
           onPress={() => router.replace("/login")}
         >
           <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
-            Don't have an account ? Sign Up
+            Already have an accoun ? Sign In
           </Text>
         </Pressable>
       </KeyboardAvoidingView>
